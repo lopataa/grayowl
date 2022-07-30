@@ -1,0 +1,18 @@
+name: "grayowl"
+version: '${project.version}'
+main: me.lopataa.grayowl.Grayowl
+api-version: 1.19
+author: "lopataa"
+description: "grayowl is a plugin that integrates minecraft and discord"
+
+commands:
+  hello:
+    description: hello
+    usage: /hello
+  music:
+    description: Interprets messages as to a music bot on discord
+    usage: /music
+  uwu:
+    description: show "uwu" to players' screen
+    usage: [/uwu, /uwu <player>]
+

@@ -1,0 +1,28 @@
+discord_token: "YOUR_DISCORD_TOKEN"
+server_name: "server name"
+
+chat:
+  enabled: true
+  channel: 997551922800246886
+  messages:
+    join: true
+    leave: true
+    chat: true
+    advancement: true
+    death: true
+    server: true
+
+music:
+  enabled: false
+  channel: 997551922800246886
+  bot_prefix: "$"
+
+discord_chat:
+  enabled: true
+  listen_channel: 997551922800246886
+  allow_send: true
+
+discord_link:
+  enabled: true
+  listen_channel: 1000392221985611776
+  allow_send: true
