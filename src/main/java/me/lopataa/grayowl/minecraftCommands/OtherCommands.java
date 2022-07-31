@@ -1,8 +1,5 @@
-package me.lopataa.grayowl.commands;
+package me.lopataa.grayowl.minecraftCommands;
 
-import discord4j.common.util.Snowflake;
-import discord4j.core.GatewayDiscordClient;
-import discord4j.core.object.entity.channel.Channel;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -65,5 +62,6 @@ public class OtherCommands implements CommandExecutor {
                 sender_player.sendMessage(ChatColor.RED + "/uwu: player " + target_username + " is not online.");
             }
         }
+        return true;
     }
 }

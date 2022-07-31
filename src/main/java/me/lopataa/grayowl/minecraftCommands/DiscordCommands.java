@@ -1,4 +1,4 @@
-package me.lopataa.grayowl.commands;
+package me.lopataa.grayowl.minecraftCommands;
 
 import discord4j.common.util.Snowflake;
 import discord4j.core.GatewayDiscordClient;

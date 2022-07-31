@@ -7,15 +7,14 @@ import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.object.entity.channel.Channel;
 import discord4j.core.object.presence.ClientActivity;
 import discord4j.core.object.presence.ClientPresence;
-import me.lopataa.grayowl.commands.DiscordCommands;
-import me.lopataa.grayowl.commands.OtherCommands;
-import me.lopataa.grayowl.listeners.DiscordListener;
+import me.lopataa.grayowl.minecraftCommands.DiscordCommands;
+import me.lopataa.grayowl.minecraftCommands.OtherCommands;
+import me.lopataa.grayowl.listeners.InGameListener;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.logging.Logger;
 
@@ -62,7 +61,7 @@ public final class Grayowl extends JavaPlugin {
         getCommand("music").setExecutor(new DiscordCommands(client));
 
         // Register events
-        getServer().getPluginManager().registerEvents(new DiscordListener(client), this);
+        getServer().getPluginManager().registerEvents(new InGameListener(client), this);
 
     }
 
