@@ -1,4 +1,4 @@
-package me.lopataa.grayowl.listeners;
+package me.lopataa.grayowl.minecraftListeners;
 
 import discord4j.common.util.Snowflake;
 import discord4j.core.GatewayDiscordClient;

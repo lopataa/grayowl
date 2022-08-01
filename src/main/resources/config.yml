@@ -4,6 +4,7 @@ server_name: "server name"
 chat:
   enabled: true
   channel: 997551922800246886
+  send_from_discord: true
   messages:
     join: true
     leave: true
@@ -13,16 +14,13 @@ chat:
     server: true
 
 music:
-  enabled: false
+  enabled: true
   channel: 997551922800246886
   bot_prefix: "$"
 
-discord_chat:
-  enabled: true
-  listen_channel: 997551922800246886
-  allow_send: true
-
-discord_link:
-  enabled: true
-  listen_channel: 1000392221985611776
-  allow_send: true
+commands:
+  other:
+    uwu:
+      enabled: true
+    hello:
+      enabled: true

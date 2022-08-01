@@ -7,9 +7,10 @@ import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.object.entity.channel.Channel;
 import discord4j.core.object.presence.ClientActivity;
 import discord4j.core.object.presence.ClientPresence;
+import me.lopataa.grayowl.minecraftListeners.onMessageListener;
 import me.lopataa.grayowl.minecraftCommands.DiscordCommands;
 import me.lopataa.grayowl.minecraftCommands.OtherCommands;
-import me.lopataa.grayowl.listeners.InGameListener;
+import me.lopataa.grayowl.minecraftListeners.InGameListener;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
 
 public final class Grayowl extends JavaPlugin {
 
-    Logger logger = Bukkit.getLogger();
+    public Logger logger = Bukkit.getLogger();
 
     public static GatewayDiscordClient client;
 
@@ -48,23 +49,33 @@ public final class Grayowl extends JavaPlugin {
         client.updatePresence(ClientPresence.online(ClientActivity.playing("on " + getConfig().getString("server_name")))).subscribe();
         Channel channel = client.getChannelById(Snowflake.of(getConfig().getString("chat.channel"))).block();
         channel.getRestChannel().createMessage("Server is now online").block();
-        client.onDisconnect().subscribe(disconnectEvent -> {if(getConfig().getBoolean("chat.messages.server") == true) {
-            channel.getRestChannel().createMessage("Server is now offline").block();
-        }});
+        client.onDisconnect().subscribe(disconnectEvent -> {
+            if (getConfig().getBoolean("chat.messages.server") == true) {
+                channel.getRestChannel().createMessage("Server is now offline").block();
+            }
+        });
 
         // Register commands
-        getCommand("hello").setExecutor(new DiscordCommands(client));
-
-        if (getConfig().getBoolean("commands.other.uwu") == true) {
+        if (getConfig().getBoolean("commands.other.hello.enabled") == true) {
+            getCommand("hello").setExecutor(new DiscordCommands(client));
+        }
+        if (getConfig().getBoolean("commands.other.uwu.enabled") == true) {
             getCommand("uwu").setExecutor(new OtherCommands(this));
         }
-        getCommand("music").setExecutor(new DiscordCommands(client));
+        if (getConfig().getBoolean("music.enabled") == true) {
+            getCommand("music").setExecutor(new DiscordCommands(client));
+        }
+
+        // Register listeners
+        if (getConfig().getBoolean("chat.send_from_discord") == true) {
+            new onMessageListener(client, this);
+        }
 
         // Register events
         getServer().getPluginManager().registerEvents(new InGameListener(client), this);
 
-    }
 
+    }
 
 
     @Override
