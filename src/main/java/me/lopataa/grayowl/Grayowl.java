@@ -72,7 +72,7 @@ public final class Grayowl extends JavaPlugin {
         }
 
         // Register events
-        getServer().getPluginManager().registerEvents(new InGameListener(client), this);
+        getServer().getPluginManager().registerEvents(new InGameListener(client, this), this);
 
 
     }

@@ -1,5 +1,5 @@
-discord_token: "YOUR_DISCORD_TOKEN"
-server_name: "server name"
+discord_token: YOUR_DISCORD_TOKEN
+server_name: server name
 
 chat:
   enabled: true
